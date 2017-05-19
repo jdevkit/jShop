@@ -20,12 +20,15 @@ Route::group([
     'prefix' => '/admin',
     'middleware' => ['role:owner|admin']
 ], function () {
-    //    Route::get('/link1', function ()    {
-//        // Uses Auth Middleware
-//    });
+
     Route::get('/',[
         'uses' => 'admin\AdminController@index',
         'as' => 'admin.index'
+    ]);
+
+    Route::get('/users',[
+        'uses' => 'admin\AdminController@showUsers',
+        'as' => 'admin.users'
     ]);
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.

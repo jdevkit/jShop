@@ -42,13 +42,31 @@ Route::group([
     ]);
 
     Route::post('/user/{id}/roles',[
-        'uses' => 'admin\UsersController@updateRoles',
+        'uses' => 'admin\UsersController@updateUserRoles',
         'as' => 'admin.users.roles'
     ]);
 
-    Route::get('/user/{id}/delete',[
+    Route::post('/user/{id}/delete',[
         'uses' => 'admin\UsersController@deleteUser',
         'as' => 'admin.users.delete'
+    ]);
+
+    Route::get('/roles',[
+        'uses' => 'admin\UsersController@permissions',
+        'as' => 'admin.permissions',
+        'middleware' => 'permission:edit-permissions'
+    ]);
+
+    Route::post('/roles/update',[
+        'uses' => 'admin\UsersController@updateRole',
+        'as' => 'admin.role.update',
+        'middleware' => 'permission:edit-permissions'
+    ]);
+
+    Route::get('/roles/get',[
+        'uses' => 'admin\UsersController@getPermissions',
+        'as' => 'admin.role.update',
+        'middleware' => 'permission:edit-permissions'
     ]);
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.

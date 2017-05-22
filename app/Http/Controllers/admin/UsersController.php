@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\models\Permission;
 use App\models\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class UsersController extends Controller
         return redirect()->back()->with('message', 'Success!');
     }
 
-    public function updateRoles($id ,Request $request)
+    public function updateUserRoles($id ,Request $request)
     {
         $redactUser = User::find($id);
         $roles = $request->get('role');
@@ -60,6 +61,21 @@ class UsersController extends Controller
 
     public function permissions()
     {
+        $roles = Role::with('perms')->get();
+        $permissions = Permission::all();
 
+        return view('admin.users.permissions', [
+            'user' => \Auth::user(),
+            'roles' => $roles,
+            'permissions' => $permissions
+        ]);
+    }
+
+    public function getPermissions(Request $request){
+        dd($request->all());
+    }
+
+    public function updateRole(Request $request){
+        dd('update');
     }
 }

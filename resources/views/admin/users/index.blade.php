@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte::layouts.app')
 
 @section('contentheader_title')
 	Users

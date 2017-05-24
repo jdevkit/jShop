@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
 	Change Title here!

@@ -28,6 +28,7 @@
                                                 Select role to update
                                             </label>
                                             <select name="role" id="role">
+                                                <option value="" selected disabled>Select a role</option>
                                                 @foreach($roles as $role)
                                                     <option value="{!! $role->id !!}">{!! $role->display_name !!}</option>
                                                 @endforeach
@@ -38,7 +39,7 @@
                                             @foreach($permissions as $permission)
                                                 <div class="checkbox">
                                                     <label>
-                                                        {!! Form::checkbox('$permissions[]', $permission->id )!!}
+                                                        {!! Form::checkbox('permissions['. $permission->id .']', $permission->id )!!}
                                                         {!! $permission->display_name !!}
                                                     </label>
                                                 </div>

@@ -1,12 +1,15 @@
 $( document ).ready(function(){
     $('select').on('change', function() {
-        console.log( this.value );
+        $("input[name*='permissions']").prop('checked', false);
         $.ajax({
             type: "GET",
             url: '/admin/roles/get',
             data: "roleId=" + this.value,
-            success: function(){
-                console.log('success')
+            success: function(response){
+                let perms = JSON.parse(response);
+                perms.forEach(function (item) {
+                    $("input[name$='permissions[" + item.id +"]'").prop('checked', true);
+                })
             }
         })
     })

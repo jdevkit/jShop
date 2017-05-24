@@ -7,6 +7,7 @@ use App\models\Role;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Psy\Util\Json;
 
 class UsersController extends Controller
 {
@@ -72,7 +73,8 @@ class UsersController extends Controller
     }
 
     public function getPermissions(Request $request){
-        dd($request->all());
+        $role = Role::find($request->get('roleId'));
+        return $role->perms->toJson();
     }
 
     public function updateRole(Request $request){

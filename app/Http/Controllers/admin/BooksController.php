@@ -51,7 +51,7 @@ class BooksController extends Controller
             ]);
         }
 
-        return view('admin.books.index', compact('books'));
+        return view('admin.books.index', [compact('books'), 'user' => \Auth::user()]);
     }
 
     /**

@@ -15,4 +15,9 @@ class Author extends Model implements Transformable
         'biography'
     ];
 
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
+    }
+
 }

@@ -71,6 +71,16 @@ Route::group([
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
+    Route::resource('comments', 'admin\CommentsController');
+
+    Route::resource('authors', 'admin\AuthorsController');
+
+    Route::resource('ranks', 'admin\RanksController');
+
+    Route::resource('genres', 'admin\GenresController');
+
+    Route::resource('books', 'admin\BooksController');
+
 });
 
 
@@ -78,3 +88,5 @@ Route::group([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/books', 'BooksController@index')->name('books');

@@ -34,6 +34,7 @@ Menu::macro('sidebar', function () {
 ////        ->url('http://www.google.com', 'Google')
 //        ->add(Menu::adminlteSeparator('Acacha Adminlte'))
 //        #adminlte_menu
+        ->add(Link::toUrl('/admin/books/index', '<i class="fa fa-link"></i><span>Books</span>'))
         ->add(Menu::new()->prepend('<a href="#"><i class="fa fa-address-card-o"></i><span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>')
             ->addParentClass('treeview')
             ->add(Link::to(route('admin.users'), 'Users'))->addClass('treeview-menu')

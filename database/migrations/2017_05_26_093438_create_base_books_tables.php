@@ -13,6 +13,12 @@ class CreateBaseBooksTables extends Migration
      */
     public function up()
     {
+        Schema::create('authors', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->text('biography');
+        });
+
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
@@ -21,12 +27,8 @@ class CreateBaseBooksTables extends Migration
             $table->date('date');
             $table->integer('price')->unsigned();
             $table->string('file');
-        });
-
-        Schema::create('authors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->text('biography');
+            $table->integer('author_id')->unsigned();
+            $table->foreign('author_id')->references('id')->on('authors');
         });
 
         Schema::create('genres', function (Blueprint $table) {

@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Eloquent;
 
+use Prettus\Repository\Contracts\CacheableInterface;
+use Prettus\Repository\Traits\CacheableRepository;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\AuthorRepository;
@@ -12,8 +14,9 @@ use App\Validators\AuthorValidator;
  * Class AuthorRepositoryEloquent
  * @package namespace App\Repositories\Eloquent;
  */
-class AuthorRepositoryEloquent extends BaseRepository implements AuthorRepository
+class AuthorRepositoryEloquent extends BaseRepository implements AuthorRepository, CacheableInterface
 {
+    use CacheableRepository;
     /**
      * Specify Model class name
      *

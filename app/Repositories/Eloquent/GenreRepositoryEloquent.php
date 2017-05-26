@@ -7,13 +7,16 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\GenreRepository;
 use App\models\Genre;
 use App\Validators\GenreValidator;
+use Prettus\Repository\Contracts\CacheableInterface;
+use Prettus\Repository\Traits\CacheableRepository;
 
 /**
  * Class GenreRepositoryEloquent
  * @package namespace App\Repositories\Eloquent;
  */
-class GenreRepositoryEloquent extends BaseRepository implements GenreRepository
+class GenreRepositoryEloquent extends BaseRepository implements GenreRepository, CacheableInterface
 {
+    use CacheableRepository;
     /**
      * Specify Model class name
      *

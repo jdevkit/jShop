@@ -7,13 +7,16 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\RankRepository;
 use App\models\Rank;
 use App\Validators\RankValidator;
+use Prettus\Repository\Contracts\CacheableInterface;
+use Prettus\Repository\Traits\CacheableRepository;
 
 /**
  * Class RankRepositoryEloquent
  * @package namespace App\Repositories\Eloquent;
  */
-class RankRepositoryEloquent extends BaseRepository implements RankRepository
+class RankRepositoryEloquent extends BaseRepository implements RankRepository, CacheableInterface
 {
+    use CacheableRepository;
     /**
      * Specify Model class name
      *

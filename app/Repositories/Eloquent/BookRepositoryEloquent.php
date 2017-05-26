@@ -7,13 +7,16 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\BookRepository;
 use App\models\Book;
 use App\Validators\BookValidator;
+use Prettus\Repository\Contracts\CacheableInterface;
+use Prettus\Repository\Traits\CacheableRepository;
 
 /**
  * Class BookRepositoryEloquent
  * @package namespace App\Repositories\Eloquent;
  */
-class BookRepositoryEloquent extends BaseRepository implements BookRepository
+class BookRepositoryEloquent extends BaseRepository implements BookRepository, CacheableInterface
 {
+    use CacheableRepository;
     /**
      * Specify Model class name
      *

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd0373d1-b8f6-4b85-ae4b-e34b99f7b894" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -86,8 +86,8 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="180">
-                <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+              <first_editor relative-caret-position="220">
+                <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -813,7 +813,7 @@
       <workItem from="1495784107452" duration="1521000" />
       <workItem from="1495790596020" duration="11852000" />
       <workItem from="1496039120183" duration="8574000" />
-      <workItem from="1496056228004" duration="13971000" />
+      <workItem from="1496056228004" duration="14055000" />
     </task>
     <task id="LOCAL-00001" summary="made envoy run deploy">
       <created>1495197195718</created>
@@ -934,11 +934,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496071001509</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added readme file">
+      <created>1496071204913</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1496071204913</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110353000" />
+    <option name="totallyTimeSpent" value="110437000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -1018,7 +1025,8 @@
     <MESSAGE value="Fixed migrations, changed view resource files, registered repositories, created main admin view files" />
     <MESSAGE value="Fixed migrations, deleted Ranks (now in comments), added base admin pages for all models" />
     <MESSAGE value="Fixed migration once more, fixed relations, added new folders, books upload finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed migration once more, fixed relations, added new folders, books upload finished" />
+    <MESSAGE value="Added readme file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added readme file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1468,8 +1476,8 @@
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="180">
-            <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+          <first_editor relative-caret-position="220">
+            <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
             <folding />
           </first_editor>
           <second_editor />

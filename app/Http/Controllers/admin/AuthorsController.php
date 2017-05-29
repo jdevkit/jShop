@@ -51,7 +51,7 @@ class AuthorsController extends Controller
             ]);
         }
 
-        return view('admin.authors.index', compact('authors'));
+        return view('admin.authors.index', [compact('authors'), 'user' => \Auth::user()]);
     }
 
     /**
@@ -112,7 +112,7 @@ class AuthorsController extends Controller
             ]);
         }
 
-        return view('admin.authors.show', compact('author'));
+        return view('admin.authors.show', [compact('author'), 'user' => \Auth::user()]);
     }
 
 
@@ -128,7 +128,7 @@ class AuthorsController extends Controller
 
         $author = $this->repository->find($id);
 
-        return view('admin.authors.edit', compact('author'));
+        return view('admin.authors.edit', [compact('author'), 'user' => \Auth::user()]);
     }
 
 

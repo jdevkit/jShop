@@ -51,7 +51,7 @@ class CommentsController extends Controller
             ]);
         }
 
-        return view('admin.comments.index', compact('comments'));
+        return view('admin.comments.index', [compact('comments'), 'user' => \Auth::user()]);
     }
 
     /**
@@ -112,7 +112,7 @@ class CommentsController extends Controller
             ]);
         }
 
-        return view('admin.comments.show', compact('comment'));
+        return view('admin.comments.show', [compact('comment'), 'user' => \Auth::user()]);
     }
 
 
@@ -128,7 +128,7 @@ class CommentsController extends Controller
 
         $comment = $this->repository->find($id);
 
-        return view('admin.comments.edit', compact('comment'));
+        return view('admin.comments.edit', [compact('comment'), 'user' => \Auth::user()]);
     }
 
 

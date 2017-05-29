@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('contentheader_title')
-    Books
+    Genres
 @endsection
 
 
@@ -19,28 +19,24 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Cover</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
+                                    <th>Name</th>
                                     <th colspan="2">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @if( isset($books))
-                                @foreach($books as $book)
-                                    <tr>
-                                        <td>{!! $book->id !!}</td>
-                                        <td>{!! $book->title !!}</td>
-                                        <td>{!! $book->author->name !!}</td>
-                                        <td>Cover</td>
-                                        <td>{!! $book->description !!}</td>
-                                        <td>{!! $book->price !!}</td>
-                                        <td colspan="2">Actions</td>
-                                    </tr>
-                                @endforeach
-                                    @endif
+                                    @foreach($books as $book)
+                                        <tr>
+                                            <td>{!! $book->id !!}</td>
+                                            <td>{!! $book->title !!}</td>
+                                            <td>{!! $book->author->name !!}</td>
+                                            <td>Cover</td>
+                                            <td>{!! $book->description !!}</td>
+                                            <td>{!! $book->price !!}</td>
+                                            <td colspan="2">Actions</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>

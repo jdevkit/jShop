@@ -19,4 +19,20 @@ class Book extends Model implements Transformable
         'file'
     ];
 
+    public function authors()
+    {
+        return $this->belongsToMany(Author::class, 'authors_books_pivot');
+    }
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'genres_books_pivot');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+
 }

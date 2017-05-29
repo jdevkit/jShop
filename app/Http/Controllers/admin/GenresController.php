@@ -51,7 +51,7 @@ class GenresController extends Controller
             ]);
         }
 
-        return view('admin.genres.index', compact('genres'));
+        return view('admin.genres.index', [compact('genres'), 'user' => \Auth::user()]);
     }
 
     /**
@@ -112,7 +112,7 @@ class GenresController extends Controller
             ]);
         }
 
-        return view('admin.genres.show', compact('genre'));
+        return view('admin.genres.show', [compact('genre'), 'user' => \Auth::user()]);
     }
 
 
@@ -128,7 +128,7 @@ class GenresController extends Controller
 
         $genre = $this->repository->find($id);
 
-        return view('admin.genres.edit', compact('genre'));
+        return view('admin.genres.edit', [compact('genre'), 'user' => \Auth::user()]);
     }
 
 

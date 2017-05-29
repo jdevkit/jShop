@@ -14,4 +14,9 @@ class Genre extends Model implements Transformable
         'genre'
     ];
 
+    public function books()
+    {
+        return $this->belongsToMany(Book::class, 'genres_books_pivot');
+    }
+
 }

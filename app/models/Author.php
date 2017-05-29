@@ -17,7 +17,7 @@ class Author extends Model implements Transformable
 
     public function author()
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsToMany(Book::class,'authors_books_pivot');
     }
 
 }

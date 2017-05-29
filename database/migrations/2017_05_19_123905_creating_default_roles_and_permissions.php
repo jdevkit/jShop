@@ -16,9 +16,9 @@ class CreatingDefaultRolesAndPermissions extends Migration
     public function up()
     {
         $adminUser = new \App\User;
-        $adminUser->name = 'Admin';
-        $adminUser->email = 'admin@admin.com';
-        $adminUser->password = bcrypt('qweqwe');
+        $adminUser->name     = 'Admin';
+        $adminUser->email    = 'admin@admin.com';
+        $adminUser->password = 'qweqwe';
         $adminUser->save();
 
         $owner = new Role();

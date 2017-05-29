@@ -42,7 +42,7 @@ class BooksController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $books = $this->repository->all();
+        $books = $this->repository->with('author')->all();
 
         if (request()->wantsJson()) {
 
@@ -128,7 +128,7 @@ class BooksController extends Controller
 
         $book = $this->repository->find($id);
 
-        return view('admin.books.edit', compact('book'));
+        return view('admin.books.edit', [compact('book'), 'user' => \Auth::user()]);
     }
 
 

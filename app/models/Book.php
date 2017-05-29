@@ -19,9 +19,11 @@ class Book extends Model implements Transformable
         'file'
     ];
 
+    public $timestamps = false;
+
     public function authors()
     {
-        return $this->belongsToMany(Author::class, 'authors_books_pivot');
+        return $this->belongsToMany(Author::class, 'authors_books_pivot', 'book_id','author_id');
     }
 
     public function genres()

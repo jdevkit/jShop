@@ -42,7 +42,7 @@ class BooksController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $books = $this->repository->with('author')->all();
+        $books = $this->repository->with('authors')->all();
 
         if (request()->wantsJson()) {
 
@@ -52,6 +52,11 @@ class BooksController extends Controller
         }
 
         return view('admin.books.index', [compact('books'), 'user' => \Auth::user()]);
+    }
+
+    public function create()
+    {
+        return view('admin.books.edit',  ['user' => \Auth::user()]);
     }
 
     /**
@@ -66,9 +71,20 @@ class BooksController extends Controller
 
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $cover = $request->file('image');
+            $covername = $cover->getFilename() . '.' . $cover->getClientOriginalExtension();
+            $cover->move(public_path('/img/covers') ,$covername);
 
-            $book = $this->repository->create($request->all());
+            $bookfile = $request->file('file');
+            $bookname = $bookfile->getClientOriginalName() . '.' . $bookfile->getClientOriginalExtension();
+            $bookfile->move(base_path() . '/storage/books', $bookname);
+
+
+            $data = $request->except(['image', 'file']);
+            $data['image'] = $covername;
+            $data['file'] = $bookname;
+
+            $book = $this->repository->create($data);
 
             $response = [
                 'message' => 'Book created.',

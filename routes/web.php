@@ -75,8 +75,6 @@ Route::group([
 
     Route::resource('authors', 'admin\AuthorsController');
 
-    Route::resource('ranks', 'admin\RanksController');
-
     Route::resource('genres', 'admin\GenresController');
 
     Route::resource('books', 'admin\BooksController');

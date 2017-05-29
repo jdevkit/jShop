@@ -11,9 +11,11 @@
             <div class="col-md-9 col-md-offset-1">
                 <div class="box box-primary">
                     <div class="box-header">
+                        <h3>All Books</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <a href="{!! route('books.create') !!}" class="btn btn-success">Add new book</a>
                         <div class="table-responsive">
                             <table class="table table-users table-hover">
                                 <thead>
@@ -33,7 +35,7 @@
                                     <tr>
                                         <td>{!! $book->id !!}</td>
                                         <td>{!! $book->title !!}</td>
-                                        <td>{!! $book->author->name !!}</td>
+                                        <td>{!! $book->authors->name !!}</td>
                                         <td>Cover</td>
                                         <td>{!! $book->description !!}</td>
                                         <td>{!! $book->price !!}</td>

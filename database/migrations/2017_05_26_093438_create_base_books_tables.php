@@ -25,7 +25,7 @@ class CreateBaseBooksTables extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image');
-            $table->date('date');
+            $table->integer('date');
             $table->integer('price')->unsigned();
             $table->string('file');
         });

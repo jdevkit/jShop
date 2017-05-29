@@ -15,9 +15,9 @@ class Author extends Model implements Transformable
         'biography'
     ];
 
-    public function author()
+    public function book()
     {
-        return $this->belongsToMany(Book::class,'authors_books_pivot');
+        return $this->belongsToMany(Book::class,'authors_books_pivot', 'author_id','book_id');
     }
 
 }

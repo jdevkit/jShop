@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd0373d1-b8f6-4b85-ae4b-e34b99f7b894" name="Default" comment="Fixed migration once more, fixed relations, added new folders">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/covers/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/books/edit.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/storage/books/.gitignore" />
+    <list default="true" id="dd0373d1-b8f6-4b85-ae4b-e34b99f7b894" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Envoy.blade.php" afterPath="$PROJECT_DIR$/Envoy.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/BooksController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/BooksController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/BookCreateRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/BookCreateRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Author.php" afterPath="$PROJECT_DIR$/app/models/Author.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Book.php" afterPath="$PROJECT_DIR$/app/models/Book.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2017_05_26_093438_create_base_books_tables.php" afterPath="$PROJECT_DIR$/database/migrations/2017_05_26_093438_create_base_books_tables.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/books/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/books/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -82,12 +72,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/storage/books/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="20">
               <caret line="1" column="11" lean-forward="false" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="180">
+                <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -205,7 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/admin/users/permissions.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/custom/roles.js" />
         <option value="$PROJECT_DIR$/database/migrations/2017_05_26_074415_create_base_posts_tables.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
@@ -256,6 +258,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/BooksController.php" />
         <option value="$PROJECT_DIR$/public/img/covers/.gitignore" />
         <option value="$PROJECT_DIR$/storage/books/.gitignore" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -810,7 +813,7 @@
       <workItem from="1495784107452" duration="1521000" />
       <workItem from="1495790596020" duration="11852000" />
       <workItem from="1496039120183" duration="8574000" />
-      <workItem from="1496056228004" duration="13752000" />
+      <workItem from="1496056228004" duration="13971000" />
     </task>
     <task id="LOCAL-00001" summary="made envoy run deploy">
       <created>1495197195718</created>
@@ -924,11 +927,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496059303509</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fixed migration once more, fixed relations, added new folders, books upload finished">
+      <created>1496071001509</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1496071001509</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110134000" />
+    <option name="totallyTimeSpent" value="110353000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -1007,21 +1017,14 @@
     <MESSAGE value="Delete useless methods in frontend controllers" />
     <MESSAGE value="Fixed migrations, changed view resource files, registered repositories, created main admin view files" />
     <MESSAGE value="Fixed migrations, deleted Ranks (now in comments), added base admin pages for all models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed migrations, deleted Ranks (now in comments), added base admin pages for all models" />
+    <MESSAGE value="Fixed migration once more, fixed relations, added new folders, books upload finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed migration once more, fixed relations, added new folders, books upload finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CommentsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RanksController.php" />
     <entry file="file://$PROJECT_DIR$/app/Repositories/Eloquent/BookRepositoryEloquent.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1459,6 +1462,17 @@
         <state relative-caret-position="20">
           <caret line="1" column="11" lean-forward="false" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="180">
+            <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

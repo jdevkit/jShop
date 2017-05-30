@@ -11805,4 +11805,15 @@ button.close {
   overflow: visible;
   clip: auto; }
 
+.table-image {
+  max-width: 10vw;
+  max-height: 15vh; }
+
+.show-image {
+  margin: 0 auto;
+  max-height: 40vh; }
+
+.image {
+  text-align: center; }
+
 /*# sourceMappingURL=app.css.map */

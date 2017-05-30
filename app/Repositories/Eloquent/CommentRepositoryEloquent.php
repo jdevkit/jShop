@@ -17,6 +17,9 @@ use Prettus\Repository\Traits\CacheableRepository;
 class CommentRepositoryEloquent extends BaseRepository implements CommentRepository, CacheableInterface
 {
     use CacheableRepository;
+
+    protected $cacheOnly = ['all'];
+
     /**
      * Specify Model class name
      *

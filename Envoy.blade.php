@@ -18,11 +18,13 @@ php artisan migrate
 
 @task('directories')
 mkdir ./public/img/covers
+mkdir ./public/img/authors
 mkdir storage/books
 @endtask
 
 @task('permissions', ['on' => 'localhost'])
 sudo chmod 777 ./public/img/covers
+sudo chmod 777 ./public/img/authors
 sudo chmod 777 -R storage/framework
 sudo chmod 777 -R storage/logs
 sudo chmod 777 -R storage/books

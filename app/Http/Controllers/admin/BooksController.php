@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\AuthorRepository;
+use App\Repositories\GenreRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\BookCreateRequest;
 use App\Http\Requests\BookUpdateRequest;
 use App\Repositories\BookRepository;
-use App\Validators\BookValidator;
 
 
 class BooksController extends Controller
@@ -23,14 +23,21 @@ class BooksController extends Controller
     protected $repository;
 
     /**
-     * @var BookValidator
+     * @var AuthorRepository
      */
-    protected $validator;
+    protected $authorRepository;
 
-    public function __construct(BookRepository $repository, BookValidator $validator)
+    /**
+     * @var GenreRepository
+     */
+    protected $genreRepository;
+
+
+    public function __construct(BookRepository $repository, AuthorRepository $authorRepository, GenreRepository $genreRepository)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->authorRepository = $authorRepository;
+        $this->genreRepository = $genreRepository;
     }
 
 
@@ -51,12 +58,20 @@ class BooksController extends Controller
             ]);
         }
 
-        return view('admin.books.index', [compact('books'), 'user' => \Auth::user()]);
+        return view('admin.books.index', ['books'  => $books, 'user' => \Auth::user()]);
     }
 
     public function create()
     {
-        return view('admin.books.edit',  ['user' => \Auth::user()]);
+        $authors =  $this->authorRepository->all();
+        $genres = $this->genreRepository->all();
+
+        return view('admin.books.edit',  [
+            'user' => \Auth::user(),
+            'genres' => $genres,
+            'authors' => $authors
+
+        ]);
     }
 
     /**
@@ -72,19 +87,35 @@ class BooksController extends Controller
         try {
 
             $cover = $request->file('image');
-            $covername = $cover->getFilename() . '.' . $cover->getClientOriginalExtension();
-            $cover->move(public_path('/img/covers') ,$covername);
+            $coverName = $cover->getFilename() . '.' . $cover->getClientOriginalExtension();
 
-            $bookfile = $request->file('file');
-            $bookname = $bookfile->getClientOriginalName() . '.' . $bookfile->getClientOriginalExtension();
-            $bookfile->move(base_path() . '/storage/books', $bookname);
+            \Storage::disk('covers')->put(
+                $coverName,
+                file_get_contents($cover->getRealPath())
+            );
 
+            $bookFile = $request->file('file');
+            $bookName = $bookFile->getClientOriginalName() . '.' . $bookFile->getClientOriginalExtension();
+            \Storage::disk('books')->put(
+                $bookName,
+                file_get_contents($bookFile->getRealPath())
+            );
 
-            $data = $request->except(['image', 'file']);
-            $data['image'] = $covername;
-            $data['file'] = $bookname;
+            $data = $request->except(['image', 'file', '_token','authors','genres']);
+            $data['image'] = $coverName;
+            $data['file'] = $bookName;
 
             $book = $this->repository->create($data);
+
+            foreach ($request->get('genres') as $genreId){
+                $genre = $this->genreRepository->find($genreId);
+                $book->genres()->attach($genre);
+            }
+
+            foreach ($request->get('authors') as $authorId){
+                $author = $this->authorRepository->find($authorId);
+                $book->authors()->attach($author);
+            }
 
             $response = [
                 'message' => 'Book created.',
@@ -119,7 +150,7 @@ class BooksController extends Controller
      */
     public function show($id)
     {
-        $book = $this->repository->find($id);
+        $book = $this->repository->with('comments')->find($id);
 
         if (request()->wantsJson()) {
 
@@ -128,7 +159,7 @@ class BooksController extends Controller
             ]);
         }
 
-        return view('admin.books.show', compact('book'));
+        return view('admin.books.show', ['book'=> $book, 'user' => \Auth::user()]);
     }
 
 
@@ -142,9 +173,16 @@ class BooksController extends Controller
     public function edit($id)
     {
 
-        $book = $this->repository->find($id);
+        $book = $this->repository->find($id)->with(['authors','genres']);
+        $authors =  $this->authorRepository->all();
+        $genres = $this->genreRepository->all();
 
-        return view('admin.books.edit', [compact('book'), 'user' => \Auth::user()]);
+        return view('admin.books.edit', [
+            'genres' => $genres,
+            'authors' => $authors,
+            'book' => $book,
+            'user' => \Auth::user()
+        ]);
     }
 
 
@@ -160,10 +198,38 @@ class BooksController extends Controller
     {
 
         try {
+            $data = $request->except(['_token', '_method', 'image','file']);
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $book = $this->repository->find($id);
 
-            $book = $this->repository->update($request->all(), $id);
+            if ($request->hasFile('image')) {
+                $cover = $request->file('image');
+                $coverName = $cover->getFilename() . '.' . $cover->getClientOriginalExtension();
+
+                \Storage::disk('covers')->put(
+                    $coverName,
+                    file_get_contents($cover->getRealPath())
+                );
+
+                \Storage::disk('covers')->delete($book->image);
+
+                $data['image'] = $coverName;
+
+            }
+            if ($request->hasFile('file')){
+                $bookFile = $request->file('file');
+                $bookName = $bookFile->getClientOriginalName() . '.' . $bookFile->getClientOriginalExtension();
+                \Storage::disk('books')->put(
+                        $bookName,
+                        file_get_contents($bookFile->getRealPath())
+                    );
+
+                \Storage::disk('books')->delete($book->file);
+
+                $data['file'] = $bookName;
+            }
+
+            $book = $this->repository->update($data, $id);
 
             $response = [
                 'message' => 'Book updated.',
@@ -175,7 +241,7 @@ class BooksController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('books.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -200,6 +266,11 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
+        $book = $this->repository->find($id);
+
+        \Storage::disk('covers')->delete($book->image);
+        \Storage::disk('books')->delete($book->file);
+
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {

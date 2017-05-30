@@ -42,7 +42,7 @@ class GenresController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $genres = $this->repository->all();
+        $genres = $this->repository->with(['user','book'])->all();
 
         if (request()->wantsJson()) {
 
@@ -51,8 +51,14 @@ class GenresController extends Controller
             ]);
         }
 
-        return view('admin.genres.index', [compact('genres'), 'user' => \Auth::user()]);
+        return view('admin.genres.index', ['genres' => $genres, 'user' => \Auth::user()]);
     }
+
+    public function create()
+    {
+        return view('admin.genres.edit', ['user' => \Auth::user()]);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -80,7 +86,7 @@ class GenresController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('genres.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -103,7 +109,7 @@ class GenresController extends Controller
      */
     public function show($id)
     {
-        $genre = $this->repository->find($id);
+        $genre = $this->repository->with('books')->find($id);
 
         if (request()->wantsJson()) {
 
@@ -112,7 +118,7 @@ class GenresController extends Controller
             ]);
         }
 
-        return view('admin.genres.show', [compact('genre'), 'user' => \Auth::user()]);
+        return view('admin.genres.show', ['genre' => $genre, 'user' => \Auth::user()]);
     }
 
 
@@ -128,7 +134,7 @@ class GenresController extends Controller
 
         $genre = $this->repository->find($id);
 
-        return view('admin.genres.edit', [compact('genre'), 'user' => \Auth::user()]);
+        return view('admin.genres.edit', ['genre' => $genre, 'user' => \Auth::user()]);
     }
 
 
@@ -159,7 +165,7 @@ class GenresController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('genres.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -194,6 +200,6 @@ class GenresController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('message', 'Genre deleted.');
+        return redirect()->route('genres.index')->with('message', 'Genre deleted.');
     }
 }

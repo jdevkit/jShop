@@ -30,6 +30,8 @@ class BookCreateRequest extends FormRequest
             'date' => 'required|integer',
             'price' => 'required|integer',
             'file' => 'required',
+            'authors' => 'required',
+            'genres' => 'required',
         ];
     }
 }

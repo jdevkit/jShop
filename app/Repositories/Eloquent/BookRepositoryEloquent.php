@@ -17,6 +17,9 @@ use Prettus\Repository\Traits\CacheableRepository;
 class BookRepositoryEloquent extends BaseRepository implements BookRepository, CacheableInterface
 {
     use CacheableRepository;
+
+    protected $cacheOnly = ['all'];
+
     /**
      * Specify Model class name
      *

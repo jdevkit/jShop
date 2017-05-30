@@ -36,5 +36,4 @@ class Book extends Model implements Transformable
         return $this->hasMany(Comment::class);
     }
 
-
 }

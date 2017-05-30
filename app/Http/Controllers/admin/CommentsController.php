@@ -51,7 +51,7 @@ class CommentsController extends Controller
             ]);
         }
 
-        return view('admin.comments.index', [compact('comments'), 'user' => \Auth::user()]);
+        return view('admin.comments.index', ['comments' => $comments, 'user' => \Auth::user()]);
     }
 
     /**
@@ -80,7 +80,7 @@ class CommentsController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('comments.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -94,25 +94,9 @@ class CommentsController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $comment = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $comment,
-            ]);
-        }
-
-        return view('admin.comments.show', [compact('comment'), 'user' => \Auth::user()]);
+        return redirect()->route('comments.index');
     }
 
 
@@ -128,7 +112,7 @@ class CommentsController extends Controller
 
         $comment = $this->repository->find($id);
 
-        return view('admin.comments.edit', [compact('comment'), 'user' => \Auth::user()]);
+        return view('admin.comments.edit', ['comment' => $comment, 'user' => \Auth::user()]);
     }
 
 
@@ -145,8 +129,6 @@ class CommentsController extends Controller
 
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
             $comment = $this->repository->update($request->all(), $id);
 
             $response = [
@@ -159,7 +141,7 @@ class CommentsController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('comments.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -194,6 +176,6 @@ class CommentsController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('message', 'Comment deleted.');
+        return redirect()->route('comments.index')->with('message', 'Comment deleted.');
     }
 }

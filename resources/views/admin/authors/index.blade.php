@@ -10,10 +10,16 @@
         <div class="row">
             <div class="col-md-9 col-md-offset-1">
                 <div class="box box-primary">
+                    @if(\Session::has('message'))
+                        <div class="alert alert-success" role="alert">
+                            {!! Session::get('message') !!}
+                        </div>
+                    @endif
                     <div class="box-header">
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <a href="{!! route('authors.create') !!}" class="btn btn-success">Add a new Author</a>
                         <div class="table-responsive">
                             <table class="table table-users table-hover">
                                 <thead>
@@ -22,20 +28,36 @@
                                     <th>Name</th>
                                     <th>Image</th>
                                     <th>Biography</th>
-                                    <th colspan="2">Actions</th>
+                                    <th colspan="3">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if( isset($books))
-                                    @foreach($books as $book)
+                                @if( isset($authors))
+                                    @foreach($authors as $author)
                                         <tr>
-                                            <td>{!! $book->id !!}</td>
-                                            <td>{!! $book->title !!}</td>
-                                            <td>{!! $book->author->name !!}</td>
-                                            <td>Cover</td>
-                                            <td>{!! $book->description !!}</td>
-                                            <td>{!! $book->price !!}</td>
-                                            <td colspan="2">Actions</td>
+                                            <td>{!! $author->id !!}</td>
+                                            <td>{!! $author->name !!}</td>
+                                            <td>
+                                                <img class="table-image" src="/img/authors/{!! $author->image !!}" alt="">
+                                            </td>
+                                            <td>{!! $author->biography !!}</td>
+                                            <td>
+                                                <a class="btn btn-warning" href="{!! route('authors.edit',['genre' => $author->id]) !!}">
+                                                    Edit
+                                                </a>
+                                            </td>
+                                            <td>
+                                                {!! Form::open(['route' => ['authors.destroy', 'genre' => $author->id], 'method' => 'delete']) !!}
+                                                <button type="submit" class="btn btn-danger">
+                                                    Delete
+                                                </button>
+                                                {!! Form::close() !!}
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info" href="{!! route('authors.show', ['author' => $author->id]) !!}">
+                                                    Show author's books
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @endif

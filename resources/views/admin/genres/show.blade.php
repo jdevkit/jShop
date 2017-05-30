@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
-@section('htmlheader_title')
-	Change Title here!
+@section('contentheader_title')
+    Genres
 @endsection
 
 
@@ -9,23 +9,22 @@
 	<div class="container-fluid spark-screen">
 		<div class="row">
 			<div class="col-md-9 col-md-offset-1">
+                <div class="panel panel-default">
 
-				<div class="box box-success box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Example box</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{!! $genre->genre !!}</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="list-group">
+                            @foreach($genre->books as $book)
+                                <a href="{!! route('books.show',['book' => $book->id]) !!}" class="list-group-item">{!! $book->title !!}</a>
+                            @endforeach
                         </div>
-                        <!-- /.box-tools -->
                     </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        Put your content here
-                    </div>
-                    <!-- /.box-body -->
-                </div>
 
+
+                </div>
 			</div>
 		</div>
 	</div>

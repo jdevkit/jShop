@@ -12,10 +12,13 @@ class Author extends Model implements Transformable
 
     protected $fillable = [
         'name',
-        'biography'
+        'biography',
+        'image'
     ];
 
-    public function book()
+    public $timestamps = false;
+
+    public function books()
     {
         return $this->belongsToMany(Book::class,'authors_books_pivot', 'author_id','book_id');
     }

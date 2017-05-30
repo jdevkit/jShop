@@ -17,6 +17,9 @@ use Prettus\Repository\Traits\CacheableRepository;
 class GenreRepositoryEloquent extends BaseRepository implements GenreRepository, CacheableInterface
 {
     use CacheableRepository;
+
+    protected $cacheOnly = ['all'];
+
     /**
      * Specify Model class name
      *

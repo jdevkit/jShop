@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use Illuminate\Container\Container as Application;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Traits\CacheableRepository;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -17,6 +18,15 @@ use App\Validators\AuthorValidator;
 class AuthorRepositoryEloquent extends BaseRepository implements AuthorRepository, CacheableInterface
 {
     use CacheableRepository;
+
+    protected $cacheOnly = ['all'];
+
+    public function __construct(Application $app)
+    {
+        $this->photoPath = public_path('/img/authors');
+        parent::__construct($app);
+    }
+
     /**
      * Specify Model class name
      *

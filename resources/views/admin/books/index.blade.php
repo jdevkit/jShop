@@ -10,6 +10,11 @@
         <div class="row">
             <div class="col-md-9 col-md-offset-1">
                 <div class="box box-primary">
+                    @if(\Session::has('message'))
+                        <div class="alert alert-success" role="alert">
+                            {!! Session::get('message') !!}
+                        </div>
+                    @endif
                     <div class="box-header">
                         <h3>All Books</h3>
                     </div>
@@ -24,7 +29,7 @@
                                     <th>Title</th>
                                     <th>Author</th>
                                     <th>Cover</th>
-                                    <th>Description</th>
+                                    <th>Genres</th>
                                     <th>Price</th>
                                     <th colspan="2">Actions</th>
                                 </tr>
@@ -35,11 +40,36 @@
                                     <tr>
                                         <td>{!! $book->id !!}</td>
                                         <td>{!! $book->title !!}</td>
-                                        <td>{!! $book->authors->name !!}</td>
-                                        <td>Cover</td>
-                                        <td>{!! $book->description !!}</td>
-                                        <td>{!! $book->price !!}</td>
-                                        <td colspan="2">Actions</td>
+                                        <td>
+                                            @foreach($book->authors as $bookAuthor)
+                                                <a href="{!! route('authors.show', ['author' => $bookAuthor->id]) !!}">
+                                                     {!! $bookAuthor->name !!}
+                                                </a>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            <img class="table-image" src="/img/covers/{!! $book->image !!}" alt="">
+                                        </td>
+                                        <td>
+                                            @foreach($book->genres as $bookGenre)
+                                                <a href="{!! route('genres.show', ['genre' => $bookGenre->id]) !!}">
+                                                    {!! $bookGenre->genre !!}
+                                                </a>
+                                            @endforeach
+                                        </td>
+                                        <td>{!! $book->price !!} $</td>
+                                        <td>
+                                            <a href="{!! route('books.edit',['book' => $book->id]) !!}" class="btn btn-block btn-warning">
+                                                Edit
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {!! Form::open(['route' => ['books.destroy', 'genre' => $book->id], 'method' => 'delete']) !!}
+                                            <button type="submit" class="btn btn-block btn-danger">
+                                                Delete
+                                            </button>
+                                            {!! Form::close() !!}
+                                        </td>
                                     </tr>
                                 @endforeach
                                     @endif

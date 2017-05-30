@@ -48,6 +48,21 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'covers' => [
+            'driver' => 'local',
+            'root' => public_path('/img/covers'),
+        ],
+
+        'authors' => [
+            'driver' => 'local',
+            'root' => public_path('/img/authors'),
+        ],
+
+        'books' => [
+            'driver' => 'local',
+            'root' => storage_path('books'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

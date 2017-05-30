@@ -51,7 +51,12 @@ class AuthorsController extends Controller
             ]);
         }
 
-        return view('admin.authors.index', [compact('authors'), 'user' => \Auth::user()]);
+        return view('admin.authors.index', ['authors' => $authors, 'user' => \Auth::user()]);
+    }
+
+    public function create()
+    {
+        return view('admin.authors.edit', ['user' => \Auth::user()]);
     }
 
     /**
@@ -66,9 +71,14 @@ class AuthorsController extends Controller
 
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $author = $request->file('image');
+            $authorPhoto = $author->getFilename() . '.' . $author->getClientOriginalExtension();
+            $author->move(public_path('/img/authors') ,$authorPhoto);
 
-            $author = $this->repository->create($request->all());
+            $data = $request->except(['_token', 'image']);
+            $data['image'] = $authorPhoto;
+
+            $author = $this->repository->create($data);
 
             $response = [
                 'message' => 'Author created.',
@@ -80,7 +90,7 @@ class AuthorsController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('admin.authors.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -103,7 +113,7 @@ class AuthorsController extends Controller
      */
     public function show($id)
     {
-        $author = $this->repository->find($id);
+        $author = $this->repository->with('books')->find($id);
 
         if (request()->wantsJson()) {
 
@@ -112,7 +122,7 @@ class AuthorsController extends Controller
             ]);
         }
 
-        return view('admin.authors.show', [compact('author'), 'user' => \Auth::user()]);
+        return view('admin.authors.show', ['author' => $author, 'user' => \Auth::user()]);
     }
 
 
@@ -128,7 +138,7 @@ class AuthorsController extends Controller
 
         $author = $this->repository->find($id);
 
-        return view('admin.authors.edit', [compact('author'), 'user' => \Auth::user()]);
+        return view('admin.authors.edit', ['author' => $author, 'user' => \Auth::user()]);
     }
 
 
@@ -145,9 +155,25 @@ class AuthorsController extends Controller
 
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $data = $request->except(['_token', '_method', 'image']);
 
-            $author = $this->repository->update($request->all(), $id);
+            if ($request->hasFile('image')) {
+                $authorPhoto = $request->file('image');
+                $authorPhotoName = $authorPhoto->getFilename() . '.' . $authorPhoto->getClientOriginalExtension();
+
+                \Storage::disk('authors')->put(
+                    $authorPhotoName,
+                    file_get_contents($authorPhoto->getRealPath())
+                );
+
+                $author = $this->repository->find($id);
+                \Storage::disk('authors')->delete($author->image);
+
+                $data = $request->except(['_token', 'image']);
+                $data['image'] = $authorPhotoName;
+            }
+
+            $author = $this->repository->update($data, $id);
 
             $response = [
                 'message' => 'Author updated.',
@@ -159,7 +185,7 @@ class AuthorsController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('authors.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -184,6 +210,10 @@ class AuthorsController extends Controller
      */
     public function destroy($id)
     {
+        $author = $this->repository->find($id);
+
+        \Storage::disk('authors')->delete($author->image);
+
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {
@@ -194,6 +224,6 @@ class AuthorsController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('message', 'Author deleted.');
+        return redirect()->route('authors.index')->with('message', 'Author deleted.');
     }
 }

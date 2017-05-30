@@ -1,5 +1,9 @@
 @extends('adminlte::layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+@endsection
+
 @section('contentheader_title')
     Books
 @endsection
@@ -10,6 +14,11 @@
         <div class="row">
             <div class="col-md-9 col-md-offset-1">
                 <div class="box box-primary">
+                    @if(\Session::has('message'))
+                        <div class="alert alert-danger" role="alert">
+                            {!! Session::get('message') !!}
+                        </div>
+                    @endif
                     <div class="box-header">
                         <h3>Create a new book</h3>
                     </div>
@@ -38,13 +47,45 @@
 
                                 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+                                    <textarea class="form-control" rows="5" id="description" name="description">{!! isset($book) ? $book->description : '' !!}</textarea>
                                 </div>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
                                     </span>
                                 @endif
+
+                                <div class="input-group {{ $errors->has('authors') ? ' has-error' : '' }}">
+                                    <span class="input-group-addon" id="authors">Authors</span>
+                                    <select name="authors[]" class="selectpicker form-control" aria-describedby="authors" multiple title="Choose author(s)">
+                                        @foreach($authors as $author)
+                                        <option value="{!! $author->id !!}">{!! $author->name !!}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @if ($errors->has('description'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                @endif
+                                <br>
+
+                                <div class="input-group {{ $errors->has('genres') ? ' has-error' : '' }}">
+                                    <span class="input-group-addon" id="authors">Genres</span>
+                                    <select name="genres[]" class="selectpicker form-control" aria-describedby="genres" multiple title="Choose genre(s)">
+                                        @foreach($genres as $genre)
+                                        <option value="{!! $genre->id !!}">{!! $genre->genre !!}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @if ($errors->has('description'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                @endif
+                                <br>
+
+
 
                                 <div class="fileinput fileinput-new {{ $errors->has('image') ? ' has-error' : '' }}" data-provides="fileinput">
                                     <span class="btn btn-default btn-file"><span>Choose cover image</span><input type="file" name="image" accept="image" /></span>
@@ -104,6 +145,9 @@
 
 @endsection
 
-@section('adminlte::layouts.partials.scripts')
+@section('scripts')
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 @endsection

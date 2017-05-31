@@ -65,7 +65,7 @@
                                     <span class="input-group-addon" id="authors">Authors</span>
                                     <select name="authors[]" class="selectpicker form-control" aria-describedby="authors" multiple title="Choose author(s)">
                                         @foreach($authors as $author)
-                                        <option value="{!! $author->id !!}" @if($book->authors->find($author->id)) selected @endif>{!! $author->name !!}</option>
+                                        <option value="{!! $author->id !!}" @if(isset($book) && $book->authors->find($author->id)) selected @endif>{!! $author->name !!}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -80,7 +80,7 @@
                                     <span class="input-group-addon" id="authors">Genres</span>
                                     <select name="genres[]" class="selectpicker form-control" aria-describedby="genres" multiple title="Choose genre(s)">
                                         @foreach($genres as $genre)
-                                        <option value="{!! $genre->id !!}" @if($book->genres->find($genre->id)) selected @endif >{!! $genre->genre !!}</option>
+                                        <option value="{!! $genre->id !!}" @if(isset($book) && $book->genres->find($genre->id)) selected @endif >{!! $genre->genre !!}</option>
                                         @endforeach
                                     </select>
                                 </div>

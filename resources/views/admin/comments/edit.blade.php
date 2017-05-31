@@ -4,6 +4,11 @@
 	Change Title here!
 @endsection
 
+@section('menu_links')
+    <li><a href="{!! route('books.index') !!}"><i class="fa fa fa-comments-o"></i> Comments </a></li>
+    <li class="active"><i class="fa fa fa-comments-o"></i> Edit Comment</li>
+@endsection
+
 
 @section('main-content')
 	<div class="container-fluid spark-screen">

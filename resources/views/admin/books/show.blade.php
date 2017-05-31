@@ -4,6 +4,11 @@
     Books
 @endsection
 
+@section('menu_links')
+    <li><a href="{!! route('books.index') !!}"><i class="fa fa-book"></i> Books </a></li>
+    <li class="active"><i class="fa fa-book"></i> Show book</li>
+@endsection
+
 @section('main-content')
     <div class="container-fluid spark-screen">
         <div class="row">

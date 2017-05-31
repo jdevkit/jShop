@@ -4,6 +4,9 @@
     Genres
 @endsection
 
+@section('menu_links')
+    <li class="active"><i class="fa fa-list-alt"></i> Genres</li>
+@endsection
 
 @section('main-content')
     <div class="container-fluid spark-screen">

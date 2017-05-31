@@ -4,6 +4,11 @@
 	Users
 @endsection
 
+@section('menu_links')
+    <li><a href="{!! route('admin.users') !!}"><i class="fa fa-address-card-o"></i> Users </a></li>
+    <li class="active"><i class="fa fa-user"></i> Edit User</li>
+@endsection
+
 
 @section('main-content')
 	<div class="container-fluid spark-screen">

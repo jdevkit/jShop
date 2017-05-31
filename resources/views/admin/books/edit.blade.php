@@ -8,6 +8,10 @@
     Books
 @endsection
 
+@section('menu_links')
+    <li><a href="{!! route('books.index') !!}"><i class="fa fa-book"></i> Books </a></li>
+    <li class="active"><i class="fa fa-book"></i> Edit Book</li>
+@endsection
 
 @section('main-content')
     <div class="container-fluid spark-screen">
@@ -27,7 +31,10 @@
                         <div class="panel panel-default creation">
 
                             @if(isset($book))
-                                {!! Form::model($book,['files' => true, 'route' => 'books.update']) !!}
+                                {!! Form::model($book,[
+                                'files' => true,
+                                'route' => ['books.update', 'book' => $book->id],
+                                ]) !!}
                             @else
                                 {!! Form::open(['route' => 'books.store',
                                 'files' => true]) !!}
@@ -54,12 +61,11 @@
                                         <strong>{{ $errors->first('description') }}</strong>
                                     </span>
                                 @endif
-
                                 <div class="input-group {{ $errors->has('authors') ? ' has-error' : '' }}">
                                     <span class="input-group-addon" id="authors">Authors</span>
                                     <select name="authors[]" class="selectpicker form-control" aria-describedby="authors" multiple title="Choose author(s)">
                                         @foreach($authors as $author)
-                                        <option value="{!! $author->id !!}">{!! $author->name !!}</option>
+                                        <option value="{!! $author->id !!}" @if($book->authors->find($author->id)) selected @endif>{!! $author->name !!}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -74,7 +80,7 @@
                                     <span class="input-group-addon" id="authors">Genres</span>
                                     <select name="genres[]" class="selectpicker form-control" aria-describedby="genres" multiple title="Choose genre(s)">
                                         @foreach($genres as $genre)
-                                        <option value="{!! $genre->id !!}">{!! $genre->genre !!}</option>
+                                        <option value="{!! $genre->id !!}" @if($book->genres->find($genre->id)) selected @endif >{!! $genre->genre !!}</option>
                                         @endforeach
                                     </select>
                                 </div>

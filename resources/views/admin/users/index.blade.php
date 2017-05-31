@@ -4,6 +4,10 @@
 	Users
 @endsection
 
+@section('menu_links')
+    <li class="active"><i class="fa fa-address-card-o"></i> Users</li>
+@endsection
+
 
 @section('main-content')
 	<div class="container-fluid spark-screen">

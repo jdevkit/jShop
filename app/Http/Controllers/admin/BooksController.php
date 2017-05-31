@@ -173,7 +173,7 @@ class BooksController extends Controller
     public function edit($id)
     {
 
-        $book = $this->repository->find($id)->with(['authors','genres']);
+        $book = $this->repository->with(['authors','genres'])->find($id);
         $authors =  $this->authorRepository->all();
         $genres = $this->genreRepository->all();
 

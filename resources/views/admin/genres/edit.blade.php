@@ -4,6 +4,11 @@
     Authors
 @endsection
 
+@section('menu_links')
+    <li><a href="{!! route('genres.index') !!}"><i class="fa fa-list-alt"></i> Genres </a></li>
+    <li class="active"><i class="fa fa fa-list"></i> Edit Genre</li>
+@endsection
+
 
 @section('main-content')
     <div class="container-fluid spark-screen">

@@ -4,6 +4,11 @@
     Authors
 @endsection
 
+@section('menu_links')
+    <li><a href="{!! route('authors.index') !!}"><i class="fa fa-users"></i> Authors </a></li>
+    <li class="active"><i class="fa fa-user"></i> Author</li>
+@endsection
+
 @section('main-content')
 	<div class="container-fluid spark-screen">
 		<div class="row">

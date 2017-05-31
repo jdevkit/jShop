@@ -4,6 +4,9 @@
     Books
 @endsection
 
+@section('menu_links')
+    <li class="active"><i class="fa fa-book"></i> Books</li>
+@endsection
 
 @section('main-content')
     <div class="container-fluid spark-screen">

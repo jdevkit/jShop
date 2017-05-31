@@ -42,7 +42,7 @@ class GenresController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $genres = $this->repository->with(['user','book'])->all();
+        $genres = $this->repository->with('books')->all();
 
         if (request()->wantsJson()) {
 

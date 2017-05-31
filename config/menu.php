@@ -29,7 +29,7 @@ Menu::macro('adminlteDefaultMenu', function ($content) {
 Menu::macro('sidebar', function () {
     return Menu::adminlteMenu()
 //        ->add(Html::raw('HEADER')->addParentClass('header'))
-        ->action('admin\AdminController@index', '<i class="fa fa-home"></i><span>Home</span>')
+        ->add(Link::toUrl(route('admin.index'), '<i class="fa fa-home"></i><span>Home</span>'))
 //        ->link('http://www.acacha.org', Menu::adminlteDefaultMenu('Another link'))
 ////        ->url('http://www.google.com', 'Google')
 //        ->add(Menu::adminlteSeparator('Acacha Adminlte'))

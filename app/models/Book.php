@@ -36,4 +36,21 @@ class Book extends Model implements Transformable
         return $this->hasMany(Comment::class);
     }
 
+    public function rank()
+    {
+        $comments = $this->comments;
+        $totalRank = 0;
+        $rankedComments = 0;
+        foreach ($comments as $comment){
+            if ($comment->rank){
+                $rankedComments ++;
+                $totalRank += $comment->rank;
+            }
+        }
+        if ($rankedComments){
+            return round($totalRank / $rankedComments, 1);
+        }
+        return 0;
+    }
+
 }

@@ -11816,4 +11816,13 @@ button.close {
 .image {
   text-align: center; }
 
+.thumbnail .book-image {
+  height: 333px; }
+
+.book-description {
+  line-break: strict;
+  word-break: break-all;
+  word-wrap: break-word;
+  height: 44px; }
+
 /*# sourceMappingURL=app.css.map */

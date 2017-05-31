@@ -9,11 +9,13 @@
 
 @task('composer', ['on' => 'localhost'])
 composer install
+npm install
 @endtask
 
 @task('config', ['on' => 'localhost'])
 php artisan vendor:publish
 php artisan migrate
+gulp
 @endtask
 
 @task('directories')

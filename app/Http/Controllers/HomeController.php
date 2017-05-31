@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $books = $this->bookRepository->with('comments')->paginate(8);
+        $books = $this->bookRepository->with(['comments','genres'])->paginate(8);
         return view('home',['books' => $books]);
     }
 }

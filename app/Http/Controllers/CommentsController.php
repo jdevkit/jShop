@@ -39,14 +39,15 @@ class CommentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CommentCreateRequest $request)
+    public function store(CommentCreateRequest $request, $id)
     {
 
         try {
+            $data = $request->all();
+            $data['user_id'] = \Auth::id();
+            $data['book_id'] = $id;
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $comment = $this->repository->create($request->all());
+            $comment = $this->repository->create($data);
 
             $response = [
                 'message' => 'Comment created.',

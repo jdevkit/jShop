@@ -11825,4 +11825,45 @@ button.close {
   word-wrap: break-word;
   height: 44px; }
 
+.stars-ratings {
+  float: left; }
+
+.stars-ratings li {
+  padding: 0; }
+
+.stars-ratings input {
+  left: -9999px;
+  position: absolute; }
+
+.stars-ratings label {
+  float: right;
+  height: 17px;
+  display: block;
+  padding: 0 2px;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 17px; }
+
+.stars-ratings label {
+  color: #ffbeb2;
+  transition: color 0.3s; }
+
+i.fa.fa-star {
+  font-size: 20px; }
+
+.stars-ratings input + label:hover,
+.stars-ratings input + label:hover ~ label {
+  color: #FF5050; }
+
+.stars-ratings input:checked ~ label {
+  color: #FF5050; }
+
+.review-submit button.btn-u.pull-right {
+  margin-top: -17px; }
+
+/*Stars Ratings Label*/
+.stars-ratings-label label {
+  font-size: 24px;
+  margin: 0 4px 5px; }
+
 /*# sourceMappingURL=app.css.map */

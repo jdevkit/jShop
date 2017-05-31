@@ -24,7 +24,8 @@ class CommentCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'text' => 'required',
+            'rank' => 'integer'
         ];
     }
 }

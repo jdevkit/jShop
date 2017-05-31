@@ -12,9 +12,13 @@ class Comment extends Model implements Transformable
     use TransformableTrait;
 
     protected $fillable = [
+        'id',
         'text',
-        'rank'
+        'rank',
+        'user_id',
+        'book_id'
     ];
+
 
     public function book()
     {

@@ -23,7 +23,14 @@
                                     </div>
                                     <h3>{!! $book->title !!}</h3>
                                     <p class="book-description">{!! mb_strimwidth($book->description, 0 ,60) !!}</p>
-                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href="{!! route('user.book.show',['id' => $book->id]) !!}" class="btn btn-block btn-warning">Show</a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a href="#" class="btn btn-block btn-success">Buy</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

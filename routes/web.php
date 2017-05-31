@@ -87,4 +87,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/books', 'BooksController@index')->name('books');
+Route::get('/book/{id}', 'BooksController@show')->name('user.book.show');
+
+Route::post('/book/{id}/comment', [
+    'uses' => 'CommentsController@store',
+    'as' => 'user.comment.create',
+    'middleware' => 'auth'
+]);

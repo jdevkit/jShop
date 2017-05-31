@@ -36,7 +36,7 @@ class GenresController extends Controller
      */
     public function show($id)
     {
-        $genre = $this->repository->find($id);
+        $genre = $this->repository->with('books')->find($id);
 
         if (request()->wantsJson()) {
 

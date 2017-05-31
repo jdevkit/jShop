@@ -57,7 +57,7 @@ class AuthorsController extends Controller
      */
     public function show($id)
     {
-        $author = $this->repository->find($id);
+        $author = $this->repository->with('books')->find($id);
 
         if (request()->wantsJson()) {
 
@@ -66,7 +66,7 @@ class AuthorsController extends Controller
             ]);
         }
 
-        return view('authors.show', compact('author'));
+        return view('authors.show', ['author' => $author]);
     }
 
 }

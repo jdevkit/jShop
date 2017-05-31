@@ -21,8 +21,19 @@
                                                 <i class="fa {!! $star !!}" aria-hidden="true"></i>
                                         @endfor
                                     </div>
+                                    <p>Author(s):
+                                        @foreach($book->authors as $author)
+                                            <a href="{!! route('user.author.show',['id' => $author->id]) !!}"> {!! $author->name !!}</a>
+                                        @endforeach
+                                    </p>
                                     <h3>{!! $book->title !!}</h3>
-                                    <p class="book-description">{!! mb_strimwidth($book->description, 0 ,60) !!}</p>
+                                    <p class="book-description">{!! mb_strimwidth($book->description, 0 ,60) !!} ...
+                                    <hr>
+                                    <p class="genres">Genres:
+                                        @foreach($book->genres as $genre)
+                                            <a href="{!! route('user.genre.show',['id' => $genre->id]) !!}">{!! $genre->genre !!}</a>
+                                        @endforeach
+                                    </p>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <a href="{!! route('user.book.show',['id' => $book->id]) !!}" class="btn btn-block btn-warning">Show</a>

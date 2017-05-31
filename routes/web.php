@@ -89,6 +89,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/book/{id}', 'BooksController@show')->name('user.book.show');
 
+Route::get('/author/{id}', 'AuthorsController@show')->name('user.author.show');
+
+Route::get('/genre/{id}', 'GenresController@show')->name('user.genre.show');
+
 Route::post('/book/{id}/comment', [
     'uses' => 'CommentsController@store',
     'as' => 'user.comment.create',

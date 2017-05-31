@@ -16,7 +16,7 @@
   height: 333px;
 }
 
-.book-description {
+.book-description, .caption > h3 {
   line-break: strict;
   word-break: break-all;
   word-wrap: break-word;
@@ -70,4 +70,11 @@ i.fa.fa-star {
 .stars-ratings-label label {
   font-size: 24px;
   margin: 0 4px 5px;
+}
+.stars {
+  height: 22px !important;
+}
+
+.genres {
+  height: 44px;
 }

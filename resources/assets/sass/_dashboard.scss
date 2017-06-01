@@ -78,3 +78,48 @@ i.fa.fa-star {
 .genres {
   height: 44px;
 }
+
+.show-cart {
+  text-align: center;
+}
+.show-cart > tbody > tr > td {
+  vertical-align: middle;
+}
+.last{
+  position: relative;
+}
+
+.delete-item {
+  position: absolute;
+  top:0;
+  right: 0;
+  font-size: 1.5rem;
+}
+
+.minus, .minus:hover, .minus:focus,
+.plus, .plus:hover, .plus:focus{
+  text-decoration: none;
+  cursor: pointer;
+  background-color: inherit;
+  border:none;
+  outline: none;
+}
+
+.minus {
+  color: orangered;
+}
+.minus:hover, .minus:focus {
+  color: red;
+}
+
+.plus {
+  color: green;
+}
+
+.plus:hover, .plus:focus {
+  color: greenyellow;
+}
+
+.quantity {
+  font-size: 3rem;
+}

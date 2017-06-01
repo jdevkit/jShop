@@ -81,6 +81,34 @@ Route::group([
 
 });
 
+Route::group([
+    'middleware' => 'auth'
+], function (){
+
+    Route::post('/book/{id}/comment', [
+        'uses' => 'CommentsController@store',
+        'as' => 'user.comment.create',
+    ]);
+
+    Route::post('/cart', 'CartController@addToCart');
+
+    Route::post('/cart/quantity', 'CartController@getTotalQuantity');
+
+    Route::post('/cart/quantity/add', 'CartController@addItem');
+
+    Route::post('/cart/quantity/deduct', 'CartController@deductItem');
+
+    Route::post('/cart/delete', 'CartController@deleteItem');
+
+    Route::get('/cart/clear', 'CartController@clearCart')->name('user.clear.cart');
+
+
+    Route::get('/cart/show', [
+        'uses' => 'CartController@show',
+        'as' => 'user.cart.show',
+    ]);
+});
+
 
 
 Auth::routes();
@@ -93,8 +121,4 @@ Route::get('/author/{id}', 'AuthorsController@show')->name('user.author.show');
 
 Route::get('/genre/{id}', 'GenresController@show')->name('user.genre.show');
 
-Route::post('/book/{id}/comment', [
-    'uses' => 'CommentsController@store',
-    'as' => 'user.comment.create',
-    'middleware' => 'auth'
-]);
+;

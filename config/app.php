@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
 
         /*
          * Acacha Llum Service Providers...
@@ -190,7 +191,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Prettus\Repository\Providers\RepositoryServiceProvider::class
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+
 
 
     ],
@@ -244,6 +247,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
 
+
         /*
          * Acacha Llum Aliases...
          *
@@ -255,6 +259,8 @@ return [
         'Html' => Spatie\Menu\Laravel\Html::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         #llum_aliases
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
 
     ],
 

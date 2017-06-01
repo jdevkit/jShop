@@ -9,13 +9,15 @@
         "acacha/admin-lte-template-laravel": "^4.1",
         "barryvdh/laravel-debugbar": "^2.3",
         "barryvdh/laravel-ide-helper": "^2.3",
+        "darryldecode/cart": "~3.0",
         "doctrine/dbal": "^2.5",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "prettus/l5-repository": "^2.6",
         "spatie/laravel-menu": "^2.1",
-        "zizaco/entrust": "5.2.x-dev"
+        "zizaco/entrust": "5.2.x-dev",
+        "cartalyst/stripe-laravel": "6.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

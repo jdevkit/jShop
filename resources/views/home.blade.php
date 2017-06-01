@@ -38,9 +38,14 @@
                                         <div class="col-sm-6">
                                             <a href="{!! route('user.book.show',['id' => $book->id]) !!}" class="btn btn-block btn-warning">Show</a>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-block btn-success">Buy</a>
-                                        </div>
+                                        @if (!Auth::guest())
+                                            <div class="col-sm-6">
+                                                <a data-id="{!! $book->id !!}" class="buy btn btn-block btn-success">
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    Buy({!! $book->price !!} $)
+                                                </a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -53,3 +58,4 @@
     </div>
 </div>
 @endsection
+

@@ -16,8 +16,7 @@
         "laravelcollective/html": "^5.4",
         "prettus/l5-repository": "^2.6",
         "spatie/laravel-menu": "^2.1",
-        "zizaco/entrust": "5.2.x-dev",
-        "cartalyst/stripe-laravel": "6.0.*"
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

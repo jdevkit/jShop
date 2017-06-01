@@ -192,7 +192,6 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
 
 
 
@@ -260,7 +259,6 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         #llum_aliases
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
-        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
 
     ],
 

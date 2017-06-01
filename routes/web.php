@@ -18,7 +18,7 @@ Route::get('/',[
 
 Route::group([
     'prefix' => '/admin',
-    'middleware' => ['role:owner|admin']
+    'middleware' => ['auth','role:owner|admin']
 ], function () {
 
     Route::get('/',[

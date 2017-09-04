@@ -43,7 +43,7 @@
 
                                 <div class="input-group {{ $errors->has('title') ? ' has-error' : '' }}">
                                     <span class="input-group-addon" id="title">Title</span>
-                                    <input type="text" name="title" class="form-control" placeholder="Title" aria-describedby="title" value="{!! isset($book) ? $book->title : null !!}">
+                                    <input type="text" name="title" class="form-control" placeholder="Title" aria-describedby="title" value="{!! isset($book) ? $book->title : old('title') !!}">
                                 </div>
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -54,7 +54,7 @@
 
                                 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control" rows="5" id="description" name="description">{!! isset($book) ? $book->description : '' !!}</textarea>
+                                    <textarea class="form-control" rows="5" id="description" name="description">{!! isset($book) ? $book->description : old('description') !!}</textarea>
                                 </div>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -69,9 +69,9 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @if ($errors->has('description'))
+                                @if ($errors->has('authors'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('description') }}</strong>
+                                        <strong>{{ $errors->first('authors') }}</strong>
                                     </span>
                                 @endif
                                 <br>
@@ -84,9 +84,9 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @if ($errors->has('description'))
+                                @if ($errors->has('genres'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('description') }}</strong>
+                                        <strong>{{ $errors->first('genres') }}</strong>
                                     </span>
                                 @endif
                                 <br>
@@ -105,8 +105,8 @@
                                 <br>
 
                                 <div class="input-group {{ $errors->has('date') ? ' has-error' : '' }}">
-                                    <span class="input-group-addon" id="date">Date</span>
-                                    <input type="text" name="date" class="form-control" placeholder="Date" aria-describedby="date" value="{!! isset($book) ? $book->date : null !!}">
+                                    <span class="input-group-addon" id="date">Date (Year)</span>
+                                    <input type="text" name="date" class="form-control" placeholder="Date" aria-describedby="date" value="{!! isset($book) ? $book->date : old('date') !!}">
                                 </div>
                                 @if ($errors->has('date'))
                                     <span class="help-block">
@@ -117,7 +117,7 @@
 
                                 <div class="input-group {{ $errors->has('price') ? ' has-error' : '' }}">
                                     <span class="input-group-addon" id="price">Price</span>
-                                    <input type="text" class="form-control" name="price" placeholder="Price" aria-describedby="price" value="{!! isset($book) ? $book->price : null !!}">
+                                    <input type="text" class="form-control" name="price" placeholder="Price" aria-describedby="price" value="{!! isset($book) ? $book->price : old('price') !!}">
                                 </div>
                                 @if ($errors->has('price'))
                                     <span class="help-block">

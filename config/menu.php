@@ -29,21 +29,21 @@ Menu::macro('adminlteDefaultMenu', function ($content) {
 Menu::macro('sidebar', function () {
     return Menu::adminlteMenu()
 //        ->add(Html::raw('HEADER')->addParentClass('header'))
-        ->add(Link::toUrl(route('admin.index'), '<i class="fa fa-home"></i><span>Home</span>'))
+        ->add(Link::toUrl(route('admin.index'), '<i class="fa fa-home"></i><span>  Home</span>'))
 //        ->link('http://www.acacha.org', Menu::adminlteDefaultMenu('Another link'))
 ////        ->url('http://www.google.com', 'Google')
 //        ->add(Menu::adminlteSeparator('Acacha Adminlte'))
 //        #adminlte_menu
-        ->add(Menu::new()->prepend('<a href="#"><i class="fa fa-address-card-o"></i><span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>')
+        ->add(Menu::new()->prepend('<a href="#"><i class="fa fa-address-card-o"></i><span>  Users</span> <i class="fa fa-angle-left pull-right"></i></a>')
             ->addParentClass('treeview')
             ->add(Link::to(route('admin.users'), 'Users'))->addClass('treeview-menu')
             ->add(Link::to(route('admin.permissions'), 'Roles & Permissions'))
         )
 
-        ->add(Link::toUrl(route('books.index'), '<i class="fa fa-book"></i><span>Books</span>'))
-        ->add(Link::toUrl(route('authors.index'), '<i class="fa fa-users"></i><span>Authors</span>'))
-        ->add(Link::toUrl(route('comments.index'), '<i class="fa fa-comments-o"></i><span>Comments</span>'))
-        ->add(Link::toUrl(route('genres.index'), '<i class="fa fa-list-alt"></i><span>Genres</span>'))
+        ->add(Link::toUrl(route('books.index'), '<i class="fa fa-book"></i><span>  Books</span>'))
+        ->add(Link::toUrl(route('authors.index'), '<i class="fa fa-users"></i><span>  Authors</span>'))
+        ->add(Link::toUrl(route('comments.index'), '<i class="fa fa-comments-o"></i><span>  Comments</span>'))
+        ->add(Link::toUrl(route('genres.index'), '<i class="fa fa-list-alt"></i><span>  Genres</span>'))
 
         ->add(Menu::new()->prepend('<a href="#"><i class="fa fa-share"></i><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>')
             ->addParentClass('treeview')

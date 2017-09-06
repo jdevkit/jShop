@@ -18,54 +18,55 @@ Route::get('/',[
 
 Route::group([
     'prefix' => '/admin',
-    'middleware' => ['auth','role:owner|admin']
+    'middleware' => ['auth','role:owner|admin'],
+    'as' => 'admin.'
 ], function () {
 
     Route::get('/',[
         'uses' => 'admin\AdminController@index',
-        'as' => 'admin.index'
+        'as' => 'index'
     ]);
 
     Route::get('/users',[
         'uses' => 'admin\UsersController@index',
-        'as' => 'admin.users'
+        'as' => 'users'
     ]);
 
     Route::get('/user/{id}',[
         'uses' => 'admin\UsersController@editUser',
-        'as' => 'admin.users.edit'
+        'as' => 'users.edit'
     ]);
 
     Route::put('/user/{id}/update',[
         'uses' => 'admin\UsersController@updateUser',
-        'as' => 'admin.users.update'
+        'as' => 'users.update'
     ]);
 
     Route::post('/user/{id}/roles',[
         'uses' => 'admin\UsersController@updateUserRoles',
-        'as' => 'admin.users.roles'
+        'as' => 'users.roles'
     ]);
 
     Route::post('/user/{id}/delete',[
         'uses' => 'admin\UsersController@deleteUser',
-        'as' => 'admin.users.delete'
+        'as' => 'users.delete'
     ]);
 
     Route::get('/roles',[
         'uses' => 'admin\UsersController@permissions',
-        'as' => 'admin.permissions',
+        'as' => 'permissions',
         'middleware' => 'permission:edit-permissions'
     ]);
 
     Route::post('/roles/update',[
         'uses' => 'admin\UsersController@updateRole',
-        'as' => 'admin.role.update',
+        'as' => 'role.update',
         'middleware' => 'permission:edit-permissions'
     ]);
 
     Route::get('/roles/get',[
         'uses' => 'admin\UsersController@getPermissions',
-        'as' => 'admin.role.update',
+        'as' => 'role.update',
         'middleware' => 'permission:edit-permissions'
     ]);
 
@@ -102,6 +103,12 @@ Route::group([
 
     Route::get('/cart/clear', 'CartController@clearCart')->name('user.clear.cart');
 
+    Route::get('/book/{id}', 'BooksController@show')->name('book.show');
+
+    Route::get('/author/{id}', 'AuthorsController@show')->name('author.show');
+
+    Route::get('/genre/{id}', 'GenresController@show')->name('genre.show');
+
 
     Route::get('/cart/show', [
         'uses' => 'CartController@show',
@@ -109,16 +116,4 @@ Route::group([
     ]);
 });
 
-
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/book/{id}', 'BooksController@show')->name('book.show');
-
-Route::get('/author/{id}', 'AuthorsController@show')->name('author.show');
-
-Route::get('/genre/{id}', 'GenresController@show')->name('genre.show');
-
-;

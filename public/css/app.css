@@ -12724,7 +12724,7 @@ input, textarea, select {
   font-weight: 300; }
 
 ul, ol, p, dl {
-  margin: 0 0 2em 0; }
+  margin: 0 0 1em 0; }
 
 a {
   text-decoration: none; }
@@ -13283,5 +13283,18 @@ section > :last-child,
   border-radius: 50%;
   background-color: #ccc;
   font-size: 15px; }
+
+.form-group .button-big {
+  width: 100px; }
+
+.centered {
+  text-align: center; }
+
+a.authors-book {
+  background: transparent; }
+
+a.authors-book:hover, a.authors-book:active, a.authors-book:focus {
+  background: transparent;
+  box-shadow: inset 0px 0px 10px 5px #5a5a5a; }
 
 /*# sourceMappingURL=app.css.map */

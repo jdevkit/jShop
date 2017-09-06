@@ -5,7 +5,7 @@
     <div class="row">
         @foreach($books as $book)
             <div class="col-sm-3">
-                <a href="{!! route('books.show', $book->id) !!}" class="bordered-feature-image">
+                <a href="{!! route('book.show', $book->id) !!}" class="bordered-feature-image">
                     <img class="book-image" src="/img/covers/{!! $book->image !!}" alt="{!! $book->title !!}">
                 </a>
                 <div class="stars">
@@ -20,7 +20,7 @@
                 </div>
                 <p>Author(s):
                     @foreach($book->authors as $author)
-                        <a href="{!! route('user.author.show',['id' => $author->id]) !!}"> {!! $author->name !!}</a>
+                        <a href="{!! route('author.show',['id' => $author->id]) !!}"> {!! $author->name !!}</a>
                     @endforeach
                 </p>
                 <h2>{!! $book->title !!}</h2>
@@ -28,12 +28,12 @@
                         <hr>
                         <p class="genres">Genres:
                             @foreach($book->genres as $genre)
-                                <a href="{!! route('user.genre.show',['id' => $genre->id]) !!}">{!! $genre->genre !!}</a>
+                                <a href="{!! route('genre.show',['id' => $genre->id]) !!}">{!! $genre->genre !!}</a>
                             @endforeach
                         </p>
                         <div class="row">
                             <div class="col-sm-6">
-                                <a href="{!! route('user.book.show',['id' => $book->id]) !!}" class="btn-block button-big button-big--green">Show</a>
+                                <a href="{!! route('book.show',['id' => $book->id]) !!}" class="btn-block button-big button-big--green">Show</a>
                             </div>
                             @if (!Auth::guest())
                                 <div class="col-sm-6">

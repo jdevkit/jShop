@@ -5,27 +5,23 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
 
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{!! $author->name !!}</h3>
-                    </div>
+                <h2 class="centered">{!! $author->name !!}</h2>
 
-                    <div class="panel-body">
-                        <div class="image">
-                            <img class="show-image" src="/img/authors/{!! $author->image !!}" alt="">
-                        </div>
-                        <hr>
-                        {!! $author->biography !!}
-                    </div>
-
+                <div class="image">
+                    <img class="show-image" src="/img/authors/{!! $author->image !!}" alt="">
                 </div>
+                <hr>
+                <p>
+                    {!! $author->biography !!}
+                </p>
 
-                <h4>Author's books</h4>
+
+                <h2>Author's books</h2>
 
                 <div class="list-group">
                     @foreach($author->books as $book)
-                        <a href="{!! route('user.book.show',['book' => $book->id]) !!}" class="list-group-item">
+                        <a href="{!! route('book.show',['book' => $book->id]) !!}" class="list-group-item authors-book">
                                 @for ($i = 1; $i <= 5; $i++)
                                     <?php if ($book->rank() >= $i){
                                         $star = 'fa-star';

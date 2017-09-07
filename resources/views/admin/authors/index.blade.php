@@ -1,5 +1,9 @@
 @extends('adminlte::layouts.app')
 
+@section('htmlheader_title')
+    Authors
+@endsection
+
 @section('contentheader_title')
     Authors
 @endsection
@@ -22,7 +26,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <a href="{!! route('authors.create') !!}" class="btn btn-success">Add a new Author</a>
+                        <a href="{!! route('admin.authors.create') !!}" class="btn btn-success">Add a new Author</a>
                         <div class="table-responsive">
                             <table class="table table-users table-hover">
                                 <thead>
@@ -45,19 +49,19 @@
                                             </td>
                                             <td>{!! $author->biography !!}</td>
                                             <td>
-                                                <a class="btn btn-warning" href="{!! route('authors.edit',['genre' => $author->id]) !!}">
+                                                <a class="btn btn-warning" href="{!! route('admin.authors.edit',['genre' => $author->id]) !!}">
                                                     Edit
                                                 </a>
                                             </td>
                                             <td>
-                                                {!! Form::open(['route' => ['authors.destroy', 'genre' => $author->id], 'method' => 'delete']) !!}
+                                                {!! Form::open(['route' => ['admin.authors.destroy', 'genre' => $author->id], 'method' => 'delete']) !!}
                                                 <button type="submit" class="btn btn-danger">
                                                     Delete
                                                 </button>
                                                 {!! Form::close() !!}
                                             </td>
                                             <td>
-                                                <a class="btn btn-info" href="{!! route('authors.show', ['author' => $author->id]) !!}">
+                                                <a class="btn btn-info" href="{!! route('admin.authors.show', ['author' => $author->id]) !!}">
                                                     Show author's books
                                                 </a>
                                             </td>

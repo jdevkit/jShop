@@ -1,5 +1,9 @@
 @extends('adminlte::layouts.app')
 
+@section('htmlheader_title')
+    Comments
+@endsection
+
 @section('contentheader_title')
     Comments
 @endsection
@@ -44,12 +48,12 @@
                                             <td>{!! $comment->user->name !!}</td>
                                             <td>{!! $comment->book->title !!}</td>
                                             <td>
-                                                <a class="btn btn-warning" href="{!! route('comments.edit',['genre' => $comment->id]) !!}">
+                                                <a class="btn btn-warning" href="{!! route('admin.comments.edit',['genre' => $comment->id]) !!}">
                                                     Edit
                                                 </a>
                                             </td>
                                             <td>
-                                                {!! Form::open(['route' => ['comments.destroy', 'genre' => $comment->id], 'method' => 'delete']) !!}
+                                                {!! Form::open(['route' => ['admin.comments.destroy', 'genre' => $comment->id], 'method' => 'delete']) !!}
                                                 <button type="submit" class="btn btn-danger">
                                                     Delete
                                                 </button>

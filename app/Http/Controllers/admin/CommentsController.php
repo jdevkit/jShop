@@ -80,7 +80,7 @@ class CommentsController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('comments.index')->with('message', $response['message']);
+            return redirect()->route('admin.comments.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -96,7 +96,7 @@ class CommentsController extends Controller
 
     public function show($id)
     {
-        return redirect()->route('comments.index');
+        return redirect()->route('admin.comments.index');
     }
 
 
@@ -141,7 +141,7 @@ class CommentsController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('comments.index')->with('message', $response['message']);
+            return redirect()->route('admin.comments.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -176,6 +176,6 @@ class CommentsController extends Controller
             ]);
         }
 
-        return redirect()->route('comments.index')->with('message', 'Comment deleted.');
+        return redirect()->route('admin.comments.index')->with('message', 'Comment deleted.');
     }
 }

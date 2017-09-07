@@ -127,7 +127,7 @@ class BooksController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('books.index')->with('message', $response['message']);
+            return redirect()->route('admin.books.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -241,7 +241,7 @@ class BooksController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('books.index')->with('message', $response['message']);
+            return redirect()->route('admin.books.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {

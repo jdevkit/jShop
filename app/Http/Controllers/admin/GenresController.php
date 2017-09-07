@@ -86,7 +86,7 @@ class GenresController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('genres.index')->with('message', $response['message']);
+            return redirect()->route('admin.genres.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -165,7 +165,7 @@ class GenresController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('genres.index')->with('message', $response['message']);
+            return redirect()->route('admin.genres.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -200,6 +200,6 @@ class GenresController extends Controller
             ]);
         }
 
-        return redirect()->route('genres.index')->with('message', 'Genre deleted.');
+        return redirect()->route('admin.genres.index')->with('message', 'Genre deleted.');
     }
 }

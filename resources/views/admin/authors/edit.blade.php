@@ -1,11 +1,15 @@
 @extends('adminlte::layouts.app')
 
+@section('htmlheader_title')
+    Author {!! $author->name !!}
+@endsection
+
 @section('contentheader_title')
     Authors
 @endsection
 
 @section('menu_links')
-    <li><a href="{!! route('authors.index') !!}"><i class="fa fa-users"></i> Authors </a></li>
+    <li><a href="{!! route('admin.authors.index') !!}"><i class="fa fa-users"></i> Authors </a></li>
     <li class="active">Edit Author</li>
 @endsection
 
@@ -33,11 +37,11 @@
                             @if(isset($author))
                                 {!! Form::model($author,[
                                 'files' => true,
-                                'route' => ['authors.update', 'author'=> $author->id],
+                                'route' => ['admin.authors.update', 'author'=> $author->id],
                                 'method' => 'put'
                                 ]) !!}
                             @else
-                                {!! Form::open(['route' => 'authors.store',
+                                {!! Form::open(['route' => 'admin.authors.store',
                                 'files' => true]) !!}
                             @endif
                             <div class="panel-body">

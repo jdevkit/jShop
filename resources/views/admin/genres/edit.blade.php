@@ -1,11 +1,15 @@
 @extends('adminlte::layouts.app')
 
+@section('htmlheader_title')
+    Genres
+@endsection
+
 @section('contentheader_title')
-    Authors
+    Genre {!! $genre->genre !!}
 @endsection
 
 @section('menu_links')
-    <li><a href="{!! route('genres.index') !!}"><i class="fa fa-list-alt"></i> Genres </a></li>
+    <li><a href="{!! route('admin.genres.index') !!}"><i class="fa fa-list-alt"></i> Genres </a></li>
     <li class="active"><i class="fa fa fa-list"></i> Edit Genre</li>
 @endsection
 
@@ -24,10 +28,10 @@
 
                             @if(isset($genre))
                                 {!! Form::model($genre,['files' => true,
-                                 'route' => ['genres.update', 'genre' => $genre->id],
+                                 'route' => ['admin.genres.update', 'genre' => $genre->id],
                                  'method' => 'put']) !!}
                             @else
-                                {!! Form::open(['route' => 'genres.store',
+                                {!! Form::open(['route' => 'admin.genres.store',
                                 'files' => true]) !!}
                             @endif
                             <div class="panel-body">

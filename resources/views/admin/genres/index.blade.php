@@ -22,7 +22,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <a href="{!! route('genres.create') !!}" class="btn btn-success">Add new genre</a>
+                        <a href="{!! route('admin.genres.create') !!}" class="btn btn-success">Add new genre</a>
                         <div class="table-responsive">
                             <table class="table table-users table-hover">
                                 <thead>
@@ -39,19 +39,19 @@
                                             <td>{!! $genre->id !!}</td>
                                             <td>{!! $genre->genre !!}</td>
                                             <td>
-                                                <a class="btn btn-block btn-warning" href="{!! route('genres.edit',['genre' => $genre->id]) !!}">
+                                                <a class="btn btn-block btn-warning" href="{!! route('admin.genres.edit',['genre' => $genre->id]) !!}">
                                                     Edit
                                                 </a>
                                             </td>
                                             <td>
-                                                {!! Form::open(['route' => ['genres.destroy', 'genre' => $genre->id], 'method' => 'delete']) !!}
+                                                {!! Form::open(['route' => ['admin.genres.destroy', 'genre' => $genre->id], 'method' => 'delete']) !!}
                                                 <button type="submit" class="btn btn-block btn-danger">
                                                     Delete
                                                 </button>
                                                 {!! Form::close() !!}
                                             </td>
                                             <td>
-                                                <a class="btn btn-block btn-info" href="{!! route('genres.show',['genre' => $genre->id]) !!}">
+                                                <a class="btn btn-block btn-info" href="{!! route('admin.genres.show',['genre' => $genre->id]) !!}">
                                                     Show books
                                                 </a>
                                             </td>

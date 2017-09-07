@@ -1,11 +1,15 @@
 @extends('adminlte::page')
 
+@section('htmlheader_title')
+    Books
+@endsection
+
 @section('contentheader_title')
     Books
 @endsection
 
 @section('menu_links')
-    <li><a href="{!! route('books.index') !!}"><i class="fa fa-book"></i> Books </a></li>
+    <li><a href="{!! route('admin.books.index') !!}"><i class="fa fa-book"></i> Books </a></li>
     <li class="active"><i class="fa fa-book"></i> Show book</li>
 @endsection
 
@@ -30,12 +34,12 @@
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-sm-2 col-sm-offset-8">
-                                <a class="btn btn-block btn-warning" href="{!! route('authors.edit',['genre' => $book->id]) !!}">
+                                <a class="btn btn-block btn-warning" href="{!! route('admin.authors.edit',['genre' => $book->id]) !!}">
                                     Edit
                                 </a>
                             </div>
                             <div class="col-sm-2">
-                                {!! Form::open(['route' => ['authors.destroy', 'genre' => $book->id], 'method' => 'delete']) !!}
+                                {!! Form::open(['route' => ['admin.authors.destroy', 'genre' => $book->id], 'method' => 'delete']) !!}
                                 <button type="submit" class="btn btn-block btn-danger">
                                     Delete
                                 </button>
@@ -51,7 +55,7 @@
 
                 <div class="list-group">
                     @foreach($book->comments as $comment)
-                        <a href="{!! route('comments.edit',['comment' => $comment->id]) !!}" class="list-group-item comment">
+                        <a href="{!! route('admin.comments.edit',['comment' => $comment->id]) !!}" class="list-group-item comment">
                             {!! $comment->text !!}
                             <span class="rank"> {!! $comment->rank !!} / 5 </span>
                         </a>

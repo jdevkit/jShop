@@ -1,11 +1,15 @@
 @extends('adminlte::page')
 
+@section('htmlheader_title')
+    Authors
+@endsection
+
 @section('contentheader_title')
     Authors
 @endsection
 
 @section('menu_links')
-    <li><a href="{!! route('authors.index') !!}"><i class="fa fa-users"></i> Authors </a></li>
+    <li><a href="{!! route('admin.authors.index') !!}"><i class="fa fa-users"></i> Authors </a></li>
     <li class="active"><i class="fa fa-user"></i> Author</li>
 @endsection
 
@@ -30,12 +34,12 @@
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-sm-2 col-sm-offset-8">
-                                <a class="btn btn-block btn-warning" href="{!! route('authors.edit',['genre' => $author->id]) !!}">
+                                <a class="btn btn-block btn-warning" href="{!! route('admin.authors.edit',['genre' => $author->id]) !!}">
                                     Edit
                                 </a>
                             </div>
                             <div class="col-sm-2">
-                                {!! Form::open(['route' => ['authors.destroy', 'genre' => $author->id], 'method' => 'delete']) !!}
+                                {!! Form::open(['route' => ['admin.authors.destroy', 'genre' => $author->id], 'method' => 'delete']) !!}
                                 <button type="submit" class="btn btn-block btn-danger">
                                     Delete
                                 </button>
@@ -51,7 +55,7 @@
 
                 <div class="list-group">
                     @foreach($author->books as $book)
-                        <a href="{!! route('books.show',['book' => $book->id]) !!}" class="list-group-item">{!! $book->title !!}</a>
+                        <a href="{!! route('admin.books.show',['book' => $book->id]) !!}" class="list-group-item">{!! $book->title !!}</a>
                     @endforeach
                 </div>
             </div>

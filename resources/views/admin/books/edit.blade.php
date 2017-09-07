@@ -5,7 +5,7 @@
 @endsection
 
 @section('htmlheader_title')
-    Books
+    Book {!! $book->title !!}
 @endsection
 
 @section('contentheader_title')
@@ -13,7 +13,7 @@
 @endsection
 
 @section('menu_links')
-    <li><a href="{!! route('books.index') !!}"><i class="fa fa-book"></i> Books </a></li>
+    <li><a href="{!! route('admin.books.index') !!}"><i class="fa fa-book"></i> Books </a></li>
     <li class="active"><i class="fa fa-book"></i> Edit Book</li>
 @endsection
 
@@ -37,10 +37,10 @@
                             @if(isset($book))
                                 {!! Form::model($book,[
                                 'files' => true,
-                                'route' => ['books.update', 'book' => $book->id],
+                                'route' => ['admin.books.update', 'book' => $book->id],
                                 ]) !!}
                             @else
-                                {!! Form::open(['route' => 'books.store',
+                                {!! Form::open(['route' => 'admin.books.store',
                                 'files' => true]) !!}
                             @endif
                             <div class="panel-body">

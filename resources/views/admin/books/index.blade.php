@@ -1,5 +1,9 @@
 @extends('adminlte::layouts.app')
 
+@section('htmlheader_title')
+    Books
+@endsection
+
 @section('contentheader_title')
     Books
 @endsection
@@ -23,7 +27,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <a href="{!! route('books.create') !!}" class="btn btn-success">Add new book</a>
+                        <a href="{!! route('admin.books.create') !!}" class="btn btn-success">Add new book</a>
                         <div class="table-responsive">
                             <table class="table table-users table-hover">
                                 <thead>
@@ -45,7 +49,7 @@
                                         <td>{!! $book->title !!}</td>
                                         <td>
                                             @foreach($book->authors as $bookAuthor)
-                                                <a href="{!! route('authors.show', ['author' => $bookAuthor->id]) !!}">
+                                                <a href="{!! route('admin.authors.show', ['author' => $bookAuthor->id]) !!}">
                                                      {!! $bookAuthor->name !!}
                                                 </a>
                                             @endforeach
@@ -55,19 +59,19 @@
                                         </td>
                                         <td>
                                             @foreach($book->genres as $bookGenre)
-                                                <a href="{!! route('genres.show', ['genre' => $bookGenre->id]) !!}">
+                                                <a href="{!! route('admin.genres.show', ['genre' => $bookGenre->id]) !!}">
                                                     {!! $bookGenre->genre !!}
                                                 </a>
                                             @endforeach
                                         </td>
                                         <td>{!! $book->price !!} $</td>
                                         <td>
-                                            <a href="{!! route('books.edit',['book' => $book->id]) !!}" class="btn btn-block btn-warning">
+                                            <a href="{!! route('admin.books.edit',['book' => $book->id]) !!}" class="btn btn-block btn-warning">
                                                 Edit
                                             </a>
                                         </td>
                                         <td>
-                                            {!! Form::open(['route' => ['books.destroy', 'genre' => $book->id], 'method' => 'delete']) !!}
+                                            {!! Form::open(['route' => ['admin.books.destroy', 'genre' => $book->id], 'method' => 'delete']) !!}
                                             <button type="submit" class="btn btn-block btn-danger">
                                                 Delete
                                             </button>

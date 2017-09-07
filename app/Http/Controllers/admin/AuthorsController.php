@@ -90,7 +90,7 @@ class AuthorsController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('authors.index')->with('message', $response['message']);
+            return redirect()->route('admin.authors.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -185,7 +185,7 @@ class AuthorsController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('authors.index')->with('message', $response['message']);
+            return redirect()->route('admin.authors.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -224,6 +224,6 @@ class AuthorsController extends Controller
             ]);
         }
 
-        return redirect()->route('authors.index')->with('message', 'Author deleted.');
+        return redirect()->route('admin.authors.index')->with('message', 'Author deleted.');
     }
 }

@@ -5,7 +5,7 @@
 @endsection
 
 @section('menu_links')
-    <li><a href="{!! route('genres.index') !!}"><i class="fa fa-list-alt"></i> Genres </a></li>
+    <li><a href="{!! route('admin.genres.index') !!}"><i class="fa fa-list-alt"></i> Genres </a></li>
     <li class="active"><i class="fa fa fa-list"></i> Show Genre</li>
 @endsection
 
@@ -22,7 +22,7 @@
                     <div class="panel-body">
                         <div class="list-group">
                             @foreach($genre->books as $book)
-                                <a href="{!! route('books.show',['book' => $book->id]) !!}" class="list-group-item">{!! $book->title !!}</a>
+                                <a href="{!! route('admin.books.show',['book' => $book->id]) !!}" class="list-group-item">{!! $book->title !!}</a>
                             @endforeach
                         </div>
                     </div>

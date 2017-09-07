@@ -9,7 +9,7 @@
 
                 <div class="list-group">
                     @foreach($genre->books as $book)
-                        <a href="{!! route('books.show',['book' => $book->id]) !!}" class="list-group-item authors-book">
+                        <a href="{!! route('book.show',['book' => $book->id]) !!}" class="list-group-item authors-book">
                             @for ($i = 1; $i <= 5; $i++)
                                 <?php if ($book->rank() >= $i){
                                     $star = 'fa-star';

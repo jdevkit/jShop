@@ -957,9 +957,6 @@
 	text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.75);
 }
 
-.button-auth {
-	width: 100px;
-}
 .badge {
 	padding: 7px 10px 5px;
 	border-radius: 50%;
@@ -971,6 +968,13 @@
 		width:100px;
 	}
 }
+
+.form-group {
+	.button-big.button-auth {
+	width: auto;
+	}
+}
+
 .centered {
 	text-align: center;
 }

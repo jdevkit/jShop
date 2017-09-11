@@ -12,16 +12,27 @@
                         <img class="show-image" src="/img/covers/{!! $book->image !!}" alt="">
                     </div>
                     <hr>
-
-                    <div class="stars">
-                        @for ($i = 1; $i <= 5; $i++)
-                            <?php if ($book->rank() >= $i){
-                                $star = 'fa-star';
-                            } else {
-                                $star = 'fa-star-o';
-                            }?>
-                            <i class="fa {!! $star !!}" aria-hidden="true"></i>
-                        @endfor
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="stars">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <?php if ($book->rank() >= $i){
+                                        $star = 'fa-star';
+                                    } else {
+                                        $star = 'fa-star-o';
+                                    }?>
+                                    <i class="fa {!! $star !!}" aria-hidden="true"></i>
+                                @endfor
+                            </div>
+                        </div>
+                        @if (!Auth::guest())
+                            <div class=" pull-right col-sx-6 col-sm-3   col-md-4  col-lg-2">
+                                <a href="#" data-id="{!! $book->id !!}" class="buy btn-block button-big">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    Buy({!! $book->price !!} $)
+                                </a>
+                            </div>
+                        @endif
                     </div>
                     <p>Author(s):
                         @foreach($book->authors as $author)

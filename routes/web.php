@@ -66,7 +66,7 @@ Route::group([
 
     Route::get('/roles/get',[
         'uses' => 'admin\UsersController@getPermissions',
-        'as' => 'role.update',
+        'as' => 'role.get',
         'middleware' => 'permission:edit-permissions'
     ]);
 

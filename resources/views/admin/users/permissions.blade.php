@@ -27,7 +27,10 @@
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Edit roles</h3>
                                     </div>
-                                    {!! Form::open(['url' => route('admin.role.update')]) !!}
+                                    {!! Form::open([
+                                    'url' => route('admin.role.update'),
+                                    'method' => 'post'
+                                    ]) !!}
                                     <div class="panel-body">
                                         <div class="form-group">
                                             <label for="role">
@@ -36,6 +39,9 @@
                                             <select name="role" id="role">
                                                 <option value="" selected disabled>Select a role</option>
                                                 @foreach($roles as $role)
+                                                    @if($role->name === 'owner')
+                                                        @continue
+                                                    @endif
                                                     <option value="{!! $role->id !!}">{!! $role->display_name !!}</option>
                                                 @endforeach
                                             </select>

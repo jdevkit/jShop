@@ -56,6 +56,9 @@
                                         <div class="form-group">
                                             {!! Form::label('roles', "Roles") !!}
                                         @foreach($roles as $role)
+                                                @if($role->name === 'owner')
+                                                    @continue
+                                                @endif
                                             <div class="checkbox">
                                                 <label>
                                                     {!! Form::checkbox('role[]', $role->id , $redactUser->hasRole($role->name) ? true : false) !!}

@@ -78,6 +78,12 @@ class UsersController extends Controller
     }
 
     public function updateRole(Request $request){
-        dd('update');
+        $role = Role::find($request->get('role'));
+        $role->perms()->detach();
+        foreach ($request->get('permissions') as $id) {
+            $permission = Permission::find($id);
+            $role->perms()->attach($permission);
+        }
+        return redirect()->back()->with('message', 'Success !');
     }
 }
